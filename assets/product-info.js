@@ -164,6 +164,7 @@ if (!customElements.get('product-info')) {
       handleUpdateProductInfo(productUrl) {
         return (html) => {
           const variant = this.getSelectedVariant(html);
+                    const variantValues = variant.options
 
           this.pickupAvailability?.update(variant);
           this.updateOptionValues(html);
@@ -372,19 +373,6 @@ if (!customElements.get('product-info')) {
             }
           } else {
             current.innerHTML = updated.innerHTML;
-            if (selector === '.quantity__label') {
-              const updatedAriaLabelledBy = updated.getAttribute('aria-labelledby');
-              if (updatedAriaLabelledBy) {
-                current.setAttribute('aria-labelledby', updatedAriaLabelledBy);
-                // Update the referenced visually hidden element
-                const labelId = updatedAriaLabelledBy;
-                const currentHiddenLabel = document.getElementById(labelId);
-                const updatedHiddenLabel = html.getElementById(labelId);
-                if (currentHiddenLabel && updatedHiddenLabel) {
-                  currentHiddenLabel.textContent = updatedHiddenLabel.textContent;
-                }
-              }
-            }
           }
         }
       }
