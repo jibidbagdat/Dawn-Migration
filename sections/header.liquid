@@ -117,7 +117,6 @@
     assign header_tag = 'sticky-header'
   endif
 %}
-
 <{{ header_tag }}
   {% if header_tag == 'sticky-header' %}
     data-sticky-type="{{ section.settings.sticky_header_type }}"
@@ -303,6 +302,22 @@
       </a>
     </div>
   </header>
+  <script>
+  let items = document.querySelector(".header__inline-menu").querySelectorAll("details");
+  console.log(items)
+  items.forEach(item => {
+    item.addEventListener("mouseover", () => {
+      item.setAttribute("open", true);
+      item.querySelector("ul").addEventListener("mouseleave", () => {
+        item.removeAttribute("open");
+      });
+    item.addEventListener("mouseleave", () => {
+      item.removeAttribute("open");
+    });
+  });
+  
+  });
+</script>
 </{{ header_tag }}>
 
 {%- if settings.cart_type == 'notification' -%}

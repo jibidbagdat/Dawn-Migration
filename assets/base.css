@@ -3593,5 +3593,11 @@ details-disclosure > details {
   }
   100% {
     transform: translateX(100%) scaleX(0);
-  }
+  }   
+  
+.header span.header__active-menu-item {
+    text-decoration: none !important;
+}
+.header .list-menu__item--active {
+    text-decoration: none;
 }
